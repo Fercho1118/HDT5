@@ -1,4 +1,5 @@
 # HDT5
+Enlace github: https://github.com/Fercho1118/HDT5.git
 Analizando los resultados de las simulaciones, mi estrategia se enfocaría en encontrar el balance óptimo entre los recursos del sistema y el flujo de trabajo. Consideraría los siguientes puntos:
 
 Aumentar la memoria RAM: Si los procesos se retrasan por no obtener suficiente memoria, incrementarla podría reducir el tiempo de espera.
