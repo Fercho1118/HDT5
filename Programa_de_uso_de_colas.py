@@ -40,9 +40,9 @@ def proceso(nombre, env, ram, memoria, instrucciones, tiempo_instruccion):
     
 # Crear procesos
 for i in range(NUMERO_PROCESOS):
-    memoria_requerida = random.randint(1, 10)
-    instrucciones = random.randint(1, 10)
-    env.process(proceso(f'P{i}', ENVIRONMENT, RAM, memoria_requerida, instrucciones, 3))
+    memoria_requerida = random.randint(1, 10)  # Memoria requerida por proceso
+    instrucciones = random.randint(1, 10)  # Instrucciones del proceso
+    ENVIRONMENT.process(proceso(f'P{i}', ENVIRONMENT, RAM, memoria_requerida, instrucciones, 3))
     
 # Iniciar la simulación
 ENVIRONMENT.run()
