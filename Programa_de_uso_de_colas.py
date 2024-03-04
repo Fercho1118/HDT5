@@ -1,5 +1,6 @@
 import simpy
 import random
+import statistics
 
 #Configuración de la simulación
 ENVIRONMENT = simpy.Environment()
@@ -12,6 +13,8 @@ NUMERO_PROCESOS = 25
 INTERVALO = 10
 
 def proceso(nombre, env, ram, memoria, instrucciones, tiempo_instruccion):
+    #Registrar hora de inicio
+    start_time = env.now
     # Nuevo proceso creado
     yield env.timeout(random.expovariate(1.0 / INTERVALO))
     print(f'Proceso {nombre} creado en tiempo {env.now}, requiere {memoria} de RAM.')
@@ -37,6 +40,7 @@ def proceso(nombre, env, ram, memoria, instrucciones, tiempo_instruccion):
     # Liberar RAM
     yield ram.put(memoria)
     print(f'Proceso {nombre} terminado en tiempo {env.now}. Liberó {memoria} de RAM.')
+    TIEMPOS_EJECUCION.append(env.now - start_time)
     
 # Crear procesos
 for i in range(NUMERO_PROCESOS):
@@ -46,3 +50,9 @@ for i in range(NUMERO_PROCESOS):
     
 # Iniciar la simulación
 ENVIRONMENT.run()
+
+#Calcular y mostrar estadísticas
+tiempo_promedio = statistics.mean(TIEMPOS_EJECUCION)
+desviacion_estandar = statistics.stdev(TIEMPOS_EJECUCION)
+print(f'\nTiempo promedio de ejecución: {tiempo_promedio:.2f} unidades de tiempo.')
+print(f'Desviación estándar del tiempo de ejecución: {desviacion_estandar:.2f} unidades de tiempo.')
