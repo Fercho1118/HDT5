@@ -5,11 +5,11 @@ import statistics
 #Configuración de la simulación
 ENVIRONMENT = simpy.Environment()
 RAM = simpy.Container(ENVIRONMENT, init=100, capacity=100)
-CPU = simpy.Resource(ENVIRONMENT, capacity=1)
+CPU = simpy.Resource(ENVIRONMENT, capacity=2)
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
 TIEMPOS_EJECUCION = []
-NUMERO_PROCESOS = 25
+NUMERO_PROCESOS = 200
 INTERVALO = 10
 
 def proceso(nombre, env, ram, memoria, instrucciones, tiempo_instruccion):
